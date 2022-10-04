@@ -12,7 +12,9 @@ public class ViperWindow extends Canvas {
   private int windowWidth;
   private int windowHeight;
   private boolean resizeable;
+  private boolean running;
   private final JFrame window;
+  //private final Thread updateThread;
   public final static int DEFAULT_WINDOW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
   public final static int DEFAULT_WINDOW_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 
@@ -60,10 +62,55 @@ public class ViperWindow extends Canvas {
     window.setResizable(resizeable);
     window.setSize(width, height);
     window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    window.add(this);
     window.setVisible(true);
     window.setFocusable(true);
     window.setLocationRelativeTo(null);
     this.window = window;
+
+    /*
+    this.updateThread = new Thread(() -> {
+      //Game Loop
+      long lastTime = System.nanoTime();
+      double tps = 40;
+      double ns = 1000000000 / tps;
+      double delta = 0;
+      long timer = System.currentTimeMillis();
+      int updates = 0;
+      int frames = 0;
+      int tickCount = 1;
+      while (running) {
+        long now = System.nanoTime();
+        delta += (now - lastTime) / ns;
+        lastTime = now;
+        while (delta >= 1) {
+          tick(tickCount);
+          tickCount++;
+          updates++;
+          delta--;
+        }
+        render();
+        getComponentManager().modifyComponents();
+        frames++;
+
+        if (System.currentTimeMillis() - timer > 1000) {
+          timer += 1000;
+          //this.fps = frames; // (60 fps)
+          //this.tps = updates; //(40 tps)
+          frames = 0;
+          updates = 0;
+        }
+      }
+    });
+     */
+  }
+
+  private void tick(int tickCount) {
+
+  }
+
+  private void render() {
+
   }
 
 }
