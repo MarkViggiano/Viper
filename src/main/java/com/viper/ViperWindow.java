@@ -9,21 +9,21 @@ import java.awt.Toolkit;
 public class ViperWindow extends Canvas {
 
   private String windowName;
-  private int xSize;
-  private int ySize;
+  private int windowWidth;
+  private int windowHeight;
   private boolean resizeable;
   private final JFrame window;
-  public final static int DEFAULT_X_SIZE = Toolkit.getDefaultToolkit().getScreenSize().width;
-  public final static int DEFAULT_Y_SIZE = Toolkit.getDefaultToolkit().getScreenSize().height;
+  public final static int DEFAULT_WINDOW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
+  public final static int DEFAULT_WINDOW_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 
   /**
    * Create a non-resizable window with no name.
-   * @param xSize | # of pixels wide
-   * @param ySize | # of pixels tall
+   * @param windowWidth | # of pixels wide
+   * @param windowHeight | # of pixels tall
    * @return | ViperWindow instance
    */
-  public static ViperWindow createWindow(int xSize, int ySize) {
-    return new ViperWindow("ViperWindow", xSize, ySize, false);
+  public static ViperWindow createWindow(int windowWidth, int windowHeight) {
+    return new ViperWindow("ViperWindow", windowWidth, windowHeight, false);
   }
 
   /**
@@ -32,25 +32,25 @@ public class ViperWindow extends Canvas {
    * @return | ViperWindow instance
    */
   public static ViperWindow createWindow(String windowName) {
-    return new ViperWindow(windowName, DEFAULT_X_SIZE, DEFAULT_Y_SIZE, true);
+    return new ViperWindow(windowName, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, true);
   }
 
   /**
    * Create a ViperWindow with total customization at initialization
    * @param windowName | Name of the window
-   * @param xSize | # of pixels wide
-   * @param ySize | # of pixels tall
+   * @param windowWidth | # of pixels wide
+   * @param windowHeight | # of pixels tall
    * @param resizeable | allows user to resize the window
-   * @return
+   * @return | ViperWindow instance
    */
-  public static ViperWindow createWindow(String windowName, int xSize, int ySize, boolean resizeable) {
-    return new ViperWindow(windowName, xSize, ySize, resizeable);
+  public static ViperWindow createWindow(String windowName, int windowWidth, int windowHeight, boolean resizeable) {
+    return new ViperWindow(windowName, windowWidth, windowHeight, resizeable);
   }
 
   private ViperWindow(String windowName, int width, int height, boolean resizeable) {
     this.windowName = windowName;
-    this.xSize = width;
-    this.ySize = height;
+    this.windowWidth = width;
+    this.windowHeight = height;
     this.resizeable = resizeable;
 
     //create window
