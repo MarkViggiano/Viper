@@ -1,7 +1,8 @@
-package com.viper.elements;
+package com.viper.page.elements;
 
+import com.viper.visuals.Camera;
 import lombok.Data;
-
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -39,6 +40,14 @@ public class Element {
 
   public Element getChild(String id) {
     return getChildElements().getOrDefault(id, null);
+  }
+
+  public void tick() {
+
+  }
+
+  public void render(Graphics g, Camera camera) {
+
   }
 
 }
