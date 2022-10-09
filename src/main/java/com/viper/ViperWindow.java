@@ -1,11 +1,9 @@
 package com.viper;
 
-import lombok.Data;
 import javax.swing.JFrame;
 import java.awt.Canvas;
 import java.awt.Toolkit;
 
-@Data
 public class ViperWindow extends Canvas {
 
   private String windowName;
@@ -113,4 +111,38 @@ public class ViperWindow extends Canvas {
 
   }
 
+  public void setWindowName(String name) {
+    getWindow().setName(name);
+    this.windowName = name;
+  }
+
+  public String getWindowName() {
+    return windowName;
+  }
+
+  public void setWindowWidth(int windowWidth) {
+    this.windowWidth = windowWidth;
+    getWindow().setSize(getWindowWidth(), getWindowHeight());
+  }
+
+  public int getWindowWidth() {
+    return windowWidth;
+  }
+
+  public void setWindowHeight(int windowHeight) {
+    this.windowHeight = windowHeight;
+    getWindow().setSize(getWindowWidth(), getWindowHeight());
+  }
+
+  public int getWindowHeight() {
+    return windowHeight;
+  }
+
+  public JFrame getWindow() {
+    return window;
+  }
+
+  public boolean isResizeable() {
+    return resizeable;
+  }
 }

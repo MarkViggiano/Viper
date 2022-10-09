@@ -1,13 +1,11 @@
 package com.viper.page.elements;
 
 import com.viper.visuals.Camera;
-import lombok.Data;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
-@Data
 public class Element {
 
   private int x;
@@ -50,4 +48,7 @@ public class Element {
 
   }
 
+  public Hashtable<String, Element> getChildElements() {
+    return childElements;
+  }
 }

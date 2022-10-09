@@ -2,16 +2,14 @@ package com.viper.page;
 
 import com.viper.page.elements.Element;
 import com.viper.visuals.Camera;
-import lombok.Getter;
-import lombok.Setter;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Page {
 
-  @Getter private final String name;
-  @Getter @Setter private List<Element> elements;
+  private final String name;
+  private List<Element> elements;
 
   public Page(String name) {
     this.name = name;
@@ -29,4 +27,15 @@ public class Page {
 
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public List<Element> getElements() {
+    return elements;
+  }
+
+  public void setElements(List<Element> elements) {
+    this.elements = elements;
+  }
 }
