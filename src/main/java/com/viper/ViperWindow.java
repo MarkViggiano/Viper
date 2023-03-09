@@ -12,7 +12,7 @@ public class ViperWindow extends Canvas {
   private boolean resizeable;
   private boolean running;
   private final JFrame window;
-  //private final Thread updateThread;
+  private final Thread updateThread;
   public final static int DEFAULT_WINDOW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
   public final static int DEFAULT_WINDOW_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 
@@ -66,7 +66,7 @@ public class ViperWindow extends Canvas {
     window.setLocationRelativeTo(null);
     this.window = window;
 
-    /*
+
     this.updateThread = new Thread(() -> {
       //Game Loop
       long lastTime = System.nanoTime();
@@ -88,7 +88,7 @@ public class ViperWindow extends Canvas {
           delta--;
         }
         render();
-        getComponentManager().modifyComponents();
+        //getComponentManager().modifyComponents();
         frames++;
 
         if (System.currentTimeMillis() - timer > 1000) {
@@ -100,7 +100,6 @@ public class ViperWindow extends Canvas {
         }
       }
     });
-     */
   }
 
   private void tick(int tickCount) {
@@ -110,6 +109,21 @@ public class ViperWindow extends Canvas {
   private void render() {
 
   }
+
+  public void startWindow() {
+    this.running = true;
+    this.updateThread.start();
+  }
+
+  public void stopWindow() {
+    this.running = false;
+    try {
+      this.updateThread.join();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+
 
   public void setWindowName(String name) {
     getWindow().setName(name);
@@ -140,6 +154,11 @@ public class ViperWindow extends Canvas {
 
   public JFrame getWindow() {
     return window;
+  }
+
+  public void setResizeable(boolean resizeable) {
+    this.resizeable = resizeable;
+    getWindow().setResizable(resizeable);
   }
 
   public boolean isResizeable() {

@@ -1,4 +1,4 @@
-package com.viper.page.elements;
+package com.viper.page;
 
 import com.viper.visuals.Camera;
 import java.awt.Graphics;
@@ -19,12 +19,22 @@ public class Element {
   private final List<String> classes;
   private final Hashtable<String, Element> childElements;
 
+  private static final Element NULL_ELEMENT = new Element(null, null, null);
+
   public Element(Element parent, String name, String id) {
     this.parent = parent;
     this.name = name;
     this.id = id;
     this.classes = new ArrayList<>();
     this.childElements = new Hashtable<>();
+  }
+
+  protected void tick() {
+
+  }
+
+  protected void render(Graphics g, Camera camera) {
+
   }
 
   /**
@@ -37,15 +47,7 @@ public class Element {
   }
 
   public Element getChild(String id) {
-    return getChildElements().getOrDefault(id, null);
-  }
-
-  public void tick() {
-
-  }
-
-  public void render(Graphics g, Camera camera) {
-
+    return getChildElements().getOrDefault(id, NULL_ELEMENT);
   }
 
   public Hashtable<String, Element> getChildElements() {

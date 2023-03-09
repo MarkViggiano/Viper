@@ -1,6 +1,5 @@
 package com.viper.page;
 
-import com.viper.page.elements.Element;
 import com.viper.visuals.Camera;
 import java.awt.Graphics;
 import java.util.ArrayList;
